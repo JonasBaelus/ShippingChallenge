@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi
+  labels:
+    milestone-app: fastapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      milestone-app: fastapi
+  template:
+    metadata:
+      labels:
+        milestone-app: fastapi
+    spec:
+      containers:
+        - name: fastapi
+          image: jonasbaelus/fastapi
+          ports:
+            - containerPort: 8000

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    milestone-app: fastapi
+  name: fastapi
+spec:
+  type: LoadBalancer
+  ports:
+    - name: "8000"
+      port: 8000
+      targetPort: 8000
+      protocol: TCP
+  selector:
+    milestone-app: fastapi

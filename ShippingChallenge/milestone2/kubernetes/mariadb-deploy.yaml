@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+  labels:
+    milestone-app: mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      milestone-app: mariadb
+  template:
+    metadata:
+      labels:
+        milestone-app: mariadb
+    spec:
+      containers:
+        - name: mariadb
+          image: mariadb:latest
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MARIADB_ROOT_PASSWORD
+              value: wachtwoord
+            - name: MARIADB_DATABASE
+              value: milestone
